@@ -89,13 +89,13 @@ const App = () => {
         
         {favorites.map((movie) => (
           <div key={movie.imdbID} className="movie-item">
+            <button className="star" onClick={() => removeFromFavorites(movie.imdbID)}>
+              ⛔
+            </button>
             <img src={movie.Poster} alt={movie.Title} />
             <div>
               <h3>{movie.Title}</h3>
               <p>{movie.Year}</p>
-              <button onClick={() => removeFromFavorites(movie.imdbID)}>
-                Remove from Favorites
-              </button>
             </div>
           </div>
         ))}
