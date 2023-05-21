@@ -64,7 +64,16 @@ h2 {
   border-radius: 4px;
   box-shadow: 0 2px 7px rgba(0, 0, 0, 0.6);
   transition: box-shadow 0.3s ease;
+  transform: perspective(500px) rotateY(0);
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
 }
+
+.movie-item:hover {
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  transform: perspective(500px) rotateY(-10deg);
+}
+
 
 .movie-item .star {
   position: absolute;
@@ -129,7 +138,7 @@ button:hover {
 }
 
 .theme-change-container {
-  position: fixed;
+  position: absolute;
   top: 20px;
   right: 20px;
   z-index: 10;
