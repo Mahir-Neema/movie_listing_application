@@ -2,6 +2,8 @@ import React, { useState, useEffect } from "react";
 import { FaMoon, FaSun } from "react-icons/fa";
 import "./App.css";
 import { MagnifyingGlass } from "react-loader-spinner";
+import MovieListing from "./components/MovieListing";
+import Favorites from "./components/Favorites";
 
 const apikey = "b19d6809";
 
@@ -22,6 +24,8 @@ const App = () => {
     return () => clearTimeout(timer);
   }, [searchTerm]);
 
+
+   // Fetching movies from API using search word
   const fetchMovies = async () => {
     try {
       const response = await fetch(
@@ -34,14 +38,18 @@ const App = () => {
     }
   };
 
+  // setting the new changed search term
   const handleInputChange = (event) => {
     setSearchTerm(event.target.value);
   };
 
+  // adding to favorites
   const addToFavorites = (movie) => {
     setFavorites((prevFavorites) => [...prevFavorites, movie]);
   };
 
+
+  // removing from favorites
   const removeFromFavorites = (imdbID) => {
     setFavorites((prevFavorites) =>
       prevFavorites.filter((movie) => movie.imdbID !== imdbID)
@@ -53,17 +61,19 @@ const App = () => {
   };
 
   return (
-    <div className={`App ${theme}`}>
-      <h1>Movie Listing Application</h1>
+    <div className={`App ${theme}`}>   
+    <h1>Movie Listing Application</h1>
 
+      {/* theme change button  */}
       <div className="theme-change-container">
-        <button className="theme-change-button" onClick={handleThemeChange}>
-          {theme === "light" ? <FaMoon /> : <FaSun />}
-        </button>
+         <button className="theme-change-button" onClick={handleThemeChange}>
+           {theme === "light" ? <FaMoon /> : <FaSun />}
+         </button>
       </div>
 
+      {/* search container  */}
       <div className="search-container">
-        <input
+         <input
           type="text"
           placeholder="Search movies..."
           value={searchTerm}
@@ -71,6 +81,7 @@ const App = () => {
         />
       </div>
 
+      {/* Loader  */}
       {Loading && (
         <MagnifyingGlass
           visible={true}
@@ -81,47 +92,17 @@ const App = () => {
           wrapperClass="MagnifyingGlass-wrapper"
           glassColor="#c0efff"
           color="#e15b64"
-        /> 
+        />
       )}
 
-      {!Loading && <div className="movies-container">
-        <h2 className="center">All Movies</h2>
-        {movies &&
-          movies.map((movie) => (
-            <div key={movie.imdbID} className="movie-item">
-              <button className="star" onClick={() => addToFavorites(movie)}>
-                ⭐
-              </button>
-              <img src={movie.Poster} alt={movie.Title} />
-              <div>
-                <h3>{movie.Title}</h3>
-                <p>{movie.Year}</p>
-              </div>
-            </div>
-          ))}
-      </div>}
+      {/* Searched Movie List  */}
+      {!Loading && <MovieListing movies={movies} addToFavorites={addToFavorites} />}
 
-      <div className="favorites-container">
-        <h2 className="center">Favorites</h2>
-
-        {favorites.map((movie) => (
-          <div key={movie.imdbID} className="movie-item">
-            <button
-              className="star"
-              onClick={() => removeFromFavorites(movie.imdbID)}
-            >
-              ⛔
-            </button>
-            <img src={movie.Poster} alt={movie.Title} />
-            <div>
-              <h3>{movie.Title}</h3>
-              <p>{movie.Year}</p>
-            </div>
-          </div>
-        ))}
-      </div>
+      {/* favorites movie list  */}
+      <Favorites favorites={favorites} removeFromFavorites={removeFromFavorites} />
     </div>
   );
 };
 
 export default App;
+
