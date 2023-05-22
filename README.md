@@ -2,6 +2,8 @@
 
 This is a React-based movie listing application that allows users to search for movies and add them to their favorites. The application uses the OMDB API to fetch movie data based on the user's search term.
 
+## Documentation:https://ember-fern-0a0.notion.site/Documentation-4d3796b7c54a4261bbf7f3df6d88bc06
+
 ## Features
 
 - Search for movies using a search term
