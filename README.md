@@ -37,7 +37,7 @@ This is a React-based movie listing application that allows users to search for 
 4. Start the development server:
   
    ```bash
-   npm start
+   npm run dev
    
 5. Open your web browser and visit http://localhost:5173 to access the application.
 
