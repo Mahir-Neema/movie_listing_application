@@ -46,7 +46,7 @@ This is a React-based movie listing application that allows users to search for 
 1. Enter a search term in the search input field to search for movies.
 2. The list of movies matching the search term will be displayed.
 3. Click on the ⭐ button next to a movie to add it to your favorites.
-4. To remove a movie from your favorites, go to the Favorites section and click on the ⭐ button.
+4. To remove a movie from your favorites, go to the Favorites section and click on the ⛔ button.
 5. To switch between light and dark themes, click on the theme change button (🌙 or ☀️). 
 
   Movie listing by search:
