@@ -38,6 +38,24 @@ h1 {
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
+.tags{
+  padding: 4px 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.tag{
+  margin: 10px;
+  padding: 5px 10px;
+  border: 1px solid rgba(128, 128, 128, 0.39);
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+.tag:hover{
+  background-color: #9f9c9c;
+}
+
 .movies-container,
 .favorites-container {
   display: flex;

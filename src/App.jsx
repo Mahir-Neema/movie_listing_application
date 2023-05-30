@@ -81,6 +81,13 @@ const App = () => {
         />
       </div>
 
+      <div className={`tags ${theme}`}>
+        <button onClick={()=>setSearchTerm('thor')} className={`tag ${theme}`}>Thor</button>
+        <button onClick={()=>setSearchTerm('loki')} className={`tag ${theme}`}>Loki</button>
+        <button onClick={()=>setSearchTerm('john wick')} className={`tag ${theme}`}>John Wick</button>
+        <button onClick={()=>setSearchTerm('batman')} className={`tag ${theme}`}>Batman</button>
+      </div>
+
       {/* Loader  */}
       {Loading && (
         <MagnifyingGlass
